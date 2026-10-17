@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "de.dafuqs.head_in_the_clouds.mixin",
+  "refmap": "head_in_the_clouds.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "WorldMixin"
+  ],
+  "client": [
+    "client.WorldMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
