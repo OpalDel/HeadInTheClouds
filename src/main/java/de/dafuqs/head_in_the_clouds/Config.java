@@ -33,7 +33,6 @@ public class Config {
             try {
                 parsed.put(parts[0].trim(), Float.parseFloat(parts[1].trim()));
             } catch (NumberFormatException ignored) {
-                // skip malformed entries
             }
         }
         if (parsed.isEmpty()) {

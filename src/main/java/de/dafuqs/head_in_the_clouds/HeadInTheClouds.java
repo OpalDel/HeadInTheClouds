@@ -6,16 +6,15 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.config.ModConfig;
 
 @Mod(HeadInTheClouds.MODID)
 public class HeadInTheClouds {
     public static final String MODID = "head_in_the_clouds";
 
-    // TODO: replace with the Config type once we settle the config approach
-    // public static Config CONFIG;
-
     public HeadInTheClouds() {
-        // TODO: register config here (was AutoConfig.register(...))
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     public static float getCloudHeight(Level level) {
@@ -23,8 +22,7 @@ public class HeadInTheClouds {
             return getCloudHeightClient(level);
         } else {
             String regKey = level.dimension().location().toString();
-            // TODO: return CONFIG.WorldCloudHeights.getOrDefault(regKey, Float.MAX_VALUE);
-            return Float.MAX_VALUE;
+            return Config.worldCloudHeights.getOrDefault(regKey, Float.MAX_VALUE);
         }
     }
 
@@ -48,7 +46,6 @@ public class HeadInTheClouds {
             float cloudY = getCloudHeight(level) + ADDITIONAL_CLOUD_HEIGHT;
 
             if (playerY < cloudY - GRADIENT_HEIGHT) {
-                // normal
             } else if (playerY < cloudY) {
                 return (float) ((cloudY - playerY) * INVERTED_GRADIENT_HEIGHT) * original;
             } else {
