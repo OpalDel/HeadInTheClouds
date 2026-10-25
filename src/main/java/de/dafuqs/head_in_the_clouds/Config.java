@@ -16,7 +16,7 @@ public class Config {
 
     private static final ForgeConfigSpec.ConfigValue<List<? extends String>> WORLD_CLOUD_HEIGHTS = BUILDER
             .comment("Cloud height per dimension, formatted as dimension_id=height. Servers need this because cloud height is only known on clients.")
-            .defineListAllowEmpty("worldCloudHeights", List.of("minecraft:overworld=182.0"), o -> o instanceof String);
+            .defineListAllowEmpty("worldCloudHeights", List.of("minecraft:overworld=192.0"), o -> o instanceof String);
 
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
@@ -36,7 +36,7 @@ public class Config {
             }
         }
         if (parsed.isEmpty()) {
-            parsed.put("minecraft:overworld", 182.0F);
+            parsed.put("minecraft:overworld", 192.0F);
         }
         worldCloudHeights = parsed;
     }
